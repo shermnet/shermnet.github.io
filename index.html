@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shermNET</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="images/favicon.png" rel="icon" type="image">
+</head>
+<body>
+
+    <div id="shermBAR">
+        shermNET <img src="images/iconlarge.png" draggable="false">
+    </div>
+    <div class="container" id="row">
+        <div class="babyBar"></div>
+        <div class="ongoingBox" id="ongoing">
+            <p id="ongoingTitle">ongoing</p>
+            <p id="ongoingContent">web - shermNET</p>
+            <p id="ongoingContent">web - extant</p>
+            <div id="socialLinks">
+                <a href="https://bsky.app/profile/kohncke.bsky.social" target="_blank"><img src="images/blueskyTiny.png" draggable="false"></a>
+                <a href="https://www.tumblr.com/sherminatorr" target="_blank"><img src="images/tumblrTiny.png" draggable="false"></a>
+                <a href="" target="_blank"><img src="images/twitterTiny.png" draggable="false"></a>
+                <a href="https://www.last.fm/user/kohncke" target="_blank"><img src="images/lastfmTiny.png" draggable="false"></a>
+            </div>
+        </div>
+        <div class="newsbox">
+            <p id="newsTitle">news<a href="feed.xml"><img src="images/rss.png" draggable="false"></a></p>
+            <div id="rss-feed"></div>
+            <script>
+                fetch('/feed.xml')
+                    .then(response => response.text())
+                    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                    .then(data => {
+                        const items = data.querySelectorAll('item');
+                        const html = [...items].slice(0,5).map(item => `
+            <div class="rss-item">
+                <a href="${item.querySelector('link').textContent}" class="rss-title">
+                    ${item.querySelector('title').textContent}
+                </a>
+                <div class="rss-date">
+                    ${new Date(item.querySelector('pubDate').textContent).toLocaleDateString()}
+                </div>
+                <div class="rss-description">
+                    ${item.querySelector('description').textContent}
+                </div>
+            </div>
+        `).join('');
+                        document.getElementById('rss-feed').innerHTML = html;
+                    });
+            </script>
+
+        </div>
+        <div class="aboutbox">
+            <p id="aboutTitle">about</p>
+        <div class="clock">
+            <div id="timeSpent">00:00:00</div>
+            <script>
+                // Start tracking when the page loads
+                window.addEventListener('load', () => {
+                    let startTime = new Date().getTime();
+                    const timerElement = document.getElementById('timeSpent');
+
+                    // Update every second
+                    const timer = setInterval(() => {
+                        const currentTime = new Date().getTime();
+                        const secondsElapsed = Math.floor((currentTime - startTime) / 1000);
+
+                        // Calculate hours, minutes, seconds
+                        const hours = Math.floor(secondsElapsed / 3600);
+                        const minutes = Math.floor((secondsElapsed % 3600) / 60);
+                        const seconds = secondsElapsed % 60;
+
+                        // Format with leading zeros
+                        const display =
+                            String(hours).padStart(2, '0') + ":" +
+                            String(minutes).padStart(2, '0') + ":" +
+                            String(seconds).padStart(2, '0');
+
+                        timerElement.textContent = `${display}`;
+                    }, 1000);
+
+                    // Cleanup when page unloads (optional)
+                    window.addEventListener('beforeunload', () => {
+                        clearInterval(timer);
+                    });
+                });
+            </script>
+
+        </div>
+            <img src="images/manu.png" id="manu" draggable="false">
+            <div id="aboutContent">
+                <p>But I am not so selfish because once you enter my house it then becomes our house and our house music
+                    and you see no one man owns house because house music is a universal language spoke and understood by all.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

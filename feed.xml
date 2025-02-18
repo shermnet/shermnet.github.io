@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>shermNET RSS</title>
+    <link>https://www.mywebsite.com</link>
+    <description>shermNET</description>
+    <language>en-us</language>
+    
+    <item>
+      <title>shermNET 1.0</title>
+      <link>https://youtu.be/FYvR_S3iEbM?si=jNBfULGBxqgJoqH3</link>
+      <description>The first version of shermNET is live!</description>
+      <pubDate>Sat, 17 Feb 2025 10:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

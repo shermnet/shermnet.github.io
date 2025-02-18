@@ -1,0 +1,199 @@
+body {
+    margin: 0; !important;
+    padding-top: 150px; !important;
+    padding-right: 0; !important;
+    padding-left: 0; !important;
+    padding-bottom: 0px; !important;
+    background-color: #242424;
+}
+
+@font-face {
+    font-family: 'HelveticaBold';
+    src: url('fonts/Helvetica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HelveticaRegular';
+    src: url('fonts/Helvetica.ttf'); format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BLACKITALIC';
+    src: url("fonts/BLACKITALIC.ttf");
+}
+
+@font-face {
+    font-family: 'bitmap';
+    src: url("fonts/bitmap.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+#shermBAR {
+    font-family: BLACKITALIC, Arial, sans-serif;
+    background-color: black;
+    padding-left: 440px;
+    margin: 0;
+    height: 118px;
+    position: relative;
+    color: white;
+    font-size: 60pt;
+}
+
+.container {
+    display: flex;
+    height: 400px;
+}
+
+.babyBar {
+    width: 29px;
+    background-color: #333333;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+
+#ongoingTitle {
+    font-family: HelveticaBold, Arial, sans-serif;
+    color: #666666;
+    font-size: 40px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid #202020; /* Creates the underline */
+    box-shadow:
+            0 1px 0 #333333, /* Second border */
+            0 1px 0 #202020; /* Third border */
+}
+
+.ongoingBox {
+    position: relative;
+    min-height: 400px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #242424; !important;
+    width: 337px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+
+#ongoingContent {
+    font-family: HelveticaRegular, Arial, sans-serif;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 3px;
+    color: #9A9A9A;
+    background-color: #2B2B2B;
+}
+
+#socialLinks {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 16px 0;
+    text-align: center;
+    padding-left: 25px;
+}
+
+.newsbox {
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #333333; !important;
+    width: 337px;
+    overflow-x: hidden;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#newsTitle {
+    width: calc(100% - 35px);
+    border-bottom: 1px solid #2C2C2C; /* Creates the underline */
+    box-shadow:
+            0 1px 0 #3F3F3E, /* Second border */
+            0 1px 0 #2C2C2C; /* Third border */
+    font-family: HelveticaBold, Arial, sans-serif;
+    color: #4E4E4C;
+    font-size: 40px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+
+#rss-feed {
+    padding-left: 10px;
+    font-family: HelveticaRegular, Arial, sans-serif;
+    font-size: 14px;
+    color: #CDCDCA;
+    text-decoration: none;
+}
+
+.rss-item {
+    padding: 5px;
+}
+
+.aboutbox {
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #C9CABA; !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 100%;
+}
+
+#aboutTitle {
+    font-family: HelveticaBold, Arial, sans-serif;
+    color: #A0A194;
+    font-size: 40px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    width: 1050px;
+    border-bottom: 1px solid #CFCFC2; /* Creates the underline */
+    box-shadow:
+            0 1px 0 #B5B6A7, /* Second border */
+            0 1px 0 #CFCFC2; /* Third border */
+}
+
+.clock {
+    position: relative;
+    font-family: bitmap;
+    font-size: 24px;
+    color: #A0A194;
+}
+
+#timeSpent {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+#manu {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+a, a:hover, a:visited, a:active {
+    color: #FF7D00;
+    text-decoration: none;
+}
+
+#aboutContent {
+    color: #78786D;
+    font-family: HelveticaRegular, Arial, sans-serif;
+    padding-left: 10px;
+    padding-right: 500px;
+}
