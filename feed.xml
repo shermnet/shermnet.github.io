@@ -7,10 +7,16 @@
     <language>en-us</language>
     
     <item>
-      <title>shermNET 1.0</title>
+      <title>shermNET 1.0 "One Love"</title>
       <link>https://youtu.be/FYvR_S3iEbM?si=jNBfULGBxqgJoqH3</link>
       <description>The first version of shermNET is live!</description>
       <pubDate>Sat, 17 Feb 2025 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>shermNET 1.1 "Glass"</title>
+      <link>https://youtu.be/XwJdnupFc28?si=IJjkZ6fie0oPT754</link>
+      <description>First shermNET update, added the Windows 7 EOL portal.</description>
+      <pubDate>Mon, 3 Dec 2025 9:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
