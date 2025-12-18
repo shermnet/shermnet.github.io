@@ -3,99 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>shermNET</title>
-    <link href="styles.css" rel="stylesheet" type="text/css">
-    <link href="../images/favicon.png" rel="icon" type="image">
-    <link rel="preload" href="images/manu.png" as="image" type="image/png"/>
-    <link rel="preload" href="fonts/Helvetica.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
-    <link rel="preload" href="fonts/Helvetica-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
-    <link rel="preload" href="fonts/BLACKITALIC.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
-    <link rel="preload" href="fonts/bitmap.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
-
+    <link href="reset.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+<table id="spacing" width="100%" height="120px"></table>
+<table id="mainbar" width="100%" height="120px">
+<td id="shermNET"><div class="shermTEXT">shermNET</div></td>
+</table>
+<table width="100%">
+    <tbody>
+    <tr>
+        <td valign="top" width="240px" bgcolor="#242424">
+            <table>
+                <tbody>
+                <tr>
+                    <td width="40px" class="separator">
 
-    <div id="shermBAR">
-        shermNET <img src="images/iconlarge.png" width="85" height="85" draggable="false">
-    </div>
-    <div class="container" id="row">
-        <div class="babyBar"></div>
-        <div class="ongoingBox" id="ongoing">
-            <p id="ongoingTitle">ongoing</p>
-            <p id="ongoingContent">web - shermNET</p>
-            <p id="ongoingContent">web - extant</p>
-            <div id="socialLinks">
-                <a href="https://bsky.app/profile/kohncke.bsky.social" target="_blank"><img src="images/blueskyTiny.png" draggable="false"></a>
-                <a href="https://www.tumblr.com/sherminatorr" target="_blank"><img src="../images/tumblrTiny.png" draggable="false"></a>
-                <a href="" target="_blank"><img src="images/twitterTiny.png" draggable="false"></a>
-                <a href="https://www.last.fm/user/kohncke" target="_blank"><img src="images/lastfmTiny.png" draggable="false"></a>
+                    </td>
+                    <td class="move">
+                        <h2 class="ongoingTitle">ongoing</h2><br>
+                        <div class="ongoingContent">
+                            web - shermNET
+                        </div>
+                        <div class="ongoingContent">
+                            web - untitled
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <a href="http://google.com"><img src="images/1.png"></a>
+                            <a href="http://google.com"><img src="images/2.png"></a>
+                            <a href="https://bsky.app/profile/kohncke.bsky.social" target="_blank"><img src="images/3.png"></a>
+                            <a href="https://www.last.fm/user/kohncke" target="_blank"><img src="images/4.png"></a>
+                        </div>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="news" valign="top" width="200px" bgcolor="333333">
+            <h2 class="newsTitle">news<img src="images/rss.png"></h2><br>
+
+            <div class="newsbox">
+                <div id="rss-feed">
+                <script>
+                    fetch('feed.xml')
+                        .then(response => response.text())
+                        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                        .then(data => {
+                            const items = data.querySelectorAll('item');
+                            const html = [...items].slice(0,5).map(item => `
+                        <div class="rss-item">
+                            <a href="${item.querySelector('link').textContent}" class="rss-title">
+                                ${item.querySelector('title').textContent}
+                            </a>
+                            <div class="rss-date">
+                                ${new Date(item.querySelector('pubDate').textContent).toLocaleDateString()}
+                            </div>
+                            <div class="rss-description">
+                                ${item.querySelector('description').textContent}
+                            </div>
+                        </div>
+                    `).join('');
+                            document.getElementById('rss-feed').innerHTML = html;
+                        });
+                </script>
             </div>
-        </div>
-        <div class="newsbox">
-            <p id="newsTitle">news<a href="feed.xml"><img src="images/rss.png" draggable="false"></a></p>
-            <div id="rss-feed"></div>
-            <script>
-                fetch('/feed.xml')
-                    .then(response => response.text())
-                    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-                    .then(data => {
-                        const items = data.querySelectorAll('item');
-                        const html = [...items].slice(0,5).map(item => `
-            <div class="rss-item">
-                <a href="${item.querySelector('link').textContent}" class="rss-title">
-                    ${item.querySelector('title').textContent}
-                </a>
-                <div class="rss-date">
-                    ${new Date(item.querySelector('pubDate').textContent).toLocaleDateString()}
-                </div>
-                <div class="rss-description">
-                    ${item.querySelector('description').textContent}
-                </div>
             </div>
-        `).join('');
-                        document.getElementById('rss-feed').innerHTML = html;
-                    });
-            </script>
+        </td>
 
-        </div>
-        <div class="aboutbox">
-            <p id="aboutTitle">about</p>
-        <div class="clock">
-            <div id="timeSpent">00:00:00</div>
-            <script>
-                window.addEventListener('load', () => {
-                    let startTime = new Date().getTime();
-                    const timerElement = document.getElementById('timeSpent');
-
-                    const timer = setInterval(() => {
-                        const currentTime = new Date().getTime();
-                        const secondsElapsed = Math.floor((currentTime - startTime) / 1000);
-
-                        const hours = Math.floor(secondsElapsed / 3600);
-                        const minutes = Math.floor((secondsElapsed % 3600) / 60);
-                        const seconds = secondsElapsed % 60;
-
-                        const display =
-                            String(hours).padStart(2, '0') + ":" +
-                            String(minutes).padStart(2, '0') + ":" +
-                            String(seconds).padStart(2, '0');
-
-                        timerElement.textContent = `${display}`;
-                    }, 1000);
-
-                    window.addEventListener('beforeunload', () => {
-                        clearInterval(timer);
-                    });
-                });
-            </script>
-
-        </div>
-            <img src="images/manu.png" id="manu" width="284" height="355" draggable="false">
-            <div id="aboutContent">
-                <p>Welcome to the shermNET homepage.</p>
-                <p><a href="eol.html">Windows 7 EOL Portal</a></p>
-            </div>
-        </div>
-
-    </div>
+        <td valign="top" bgcolor="c9caba">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="move">
+                        <h2 class="aboutTitle">about</h2><br>
+                        <div class="aboutContent">
+                            Welcome to the shermNet homepage.<br>
+                            <a class="link" href="eol.html">
+                                Windows 7 EOL Portal</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
